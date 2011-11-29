@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple example to demonstrate Spark BorderContainer component -->
+<s:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml"
+	backgroundColor="0x000044"
+	width="300" height="600"
+    xmlns:s="library://ns.adobe.com/flex/spark">		
+	<mx:Script>
+	<![CDATA[
+		import mx.rpc.events.ResultEvent;
+		import com.serialization.json.JSON;
+		
+		private var json_result:String;
+		
+		private function personJSON(event:ResultEvent):void
+		{
+		}
+
+		private function managerJSON(event:ResultEvent):void
+		{
+		}
+		
+		private function showResults(event:ResultEvent):void
+		{
+		}
+	]]>	
+	</mx:Script>
+
+	<mx:HTTPService id="searchRequest" url="http://www.bahtera.org/kateglo/api.php" useProxy="false" 
+		method="GET" resultFormat="text" result="showResults(event)">
+		<mx:request xmlns="">
+			<phrase></phrase>
+			<format>"xml"</format>
+			<getPerson>"true"</getPerson>
+		</mx:request>
+	</mx:HTTPService>
+	
+  <!--s:BorderContainer
+    Properties
+    backgroundFill="null"
+    borderStroke="null"
+ 
+    Styles
+    backgroundImage="undefined"
+    backgroundImageFillMode="scale"
+    borderAlpha="1.0"
+    borderColor="0xB7BABC"
+    borderStyle="solid"
+    borderVisible="true"
+    borderWeight="0.5"
+    cornerRadius="0"
+    dropShadowVisible="false"
+  /-->
+	<s:BorderContainer 
+		backgroundColor="white" cornerRadius="5"
+		borderStyle="inset" borderWeight="2"
+		borderColor="maroon"
+		left="10" right="10" top="10" bottom="10">
+		<s:layout>
+			<s:HorizontalLayout 
+				paddingLeft="5" paddingRight="5" 
+				paddingTop="5" paddingBottom="5"/>
+		</s:layout>
+		<s:VGroup left="10" right="10" top="10" bottom="10"
+			paddingLeft="5" paddingRight="5" 
+			paddingTop="5" paddingBottom="5">
+			<s:Group>
+				
+			</s:Group>
+			<s:Group>
+				<!-- use a horizontal layout with a 1 pixel gap between items -->
+				<s:layout>
+					<s:HorizontalLayout gap="5" />
+				</s:layout>
+				<s:TextInput id="keyword" width="150" text="" />
+				<s:Button label="Cari" />
+			</s:Group>
+			<s:Group>
+				<s:layout>
+					<s:HorizontalLayout 
+						paddingTop="5" paddingBottom="5"/>
+				</s:layout> 
+				<s:TextArea id="result"
+					width="255" height="400">
+					
+					
+				</s:TextArea>
+
+			</s:Group>
+			<s:Group>
+				<s:Rect width="100%" height="100%">
+					
+				</s:Rect>
+				
+				</s:Group>
+		</s:VGroup>
+	</s:BorderContainer> 
+</s:WindowedApplication>
